@@ -6,7 +6,7 @@ import Identity from '..';
 
 // Web3 Identity
 export default class Web3Identity extends Identity {
-  static async login(options) {
+  static async login(options = {}) {
     const wallet = await this.getSigner(options);
     const identity = await Identities.createIdentity({
       type: "ethereum",
@@ -17,9 +17,9 @@ export default class Web3Identity extends Identity {
     return identity;
   }
 
-  static async getSigner(options) {
+  static async getSigner(options = {}) {
     const {web3} = options;   // default: window.ethereum
-    const provider = new ethers.providers.Web3Provider(web3);
+    const provider = new ethers.providers.Web3Provider(web3 || window.ethereum);
     return provider.getSigner();
   }
 }

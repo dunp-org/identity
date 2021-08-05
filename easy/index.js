@@ -8,7 +8,7 @@ import digest from './digest';
 
 // Easy Identity (from username and password, entropy or mnemonic)
 export default class EasyIdentity extends Identity {
-  static async login(options) {
+  static async login(options = {}) {
     const wallet = await this.getSigner(options);
     const identity = await Identities.createIdentity({
       type: "ethereum",
@@ -19,7 +19,7 @@ export default class EasyIdentity extends Identity {
     return identity;
   }
 
-  static async getSigner(options) {
+  static async getSigner(options = {}) {
     await processOptions(options);
     const {mnemonic, path} = options;
     return ethers.Wallet.fromMnemonic(mnemonic, path);   // default path: m/44'/60'/0'/0/0
