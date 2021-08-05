@@ -1,0 +1,30 @@
+{
+  "name": "@dunp/identity",
+  "version": "0.0.1",
+  "description": "dunp identity providers",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dunp-org/identity.git"
+  },
+  "keywords": [
+    "dunp",
+    "identity"
+  ],
+  "author": "prc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dunp-org/identity/issues"
+  },
+  "homepage": "https://dunp.org",
+  "dependencies": {
+    "bip39": "^3.0.4",
+    "ethers": "^5.4.3",
+    "jquery": "^3.6.0",
+    "orbit-db-identity-provider": "^0.4.0",
+    "process": "^0.11.10"
+  }
+}
