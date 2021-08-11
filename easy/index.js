@@ -9,13 +9,13 @@ import digest from './digest';
 // Easy Identity (from username and password, entropy or mnemonic)
 export default class EasyIdentity extends Identity {
   static async login(options = {}) {
-    const wallet = await this.getSigner(options);
+    const wallet = await EasyIdentity.getSigner(options);
     const identity = await Identities.createIdentity({
       type: "ethereum",
       wallet,
     });
-    this.saveIdentity(identity);
-    this.saveProvider('easy');
+    EasyIdentity.saveIdentity(identity);
+    EasyIdentity.saveProvider('easy');
     return identity;
   }
 

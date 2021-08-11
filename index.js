@@ -26,10 +26,15 @@ export default class Identity {
     error();
   }
 
+  static async verifyIdentity(identity) {
+    if (identity.type !== 'ethereum') return false;
+    return Identities.verifyIdentity(identity);
+  }
+
   static async getIdentity() {
     const id = storage.getItem(IDENTITY_KEY);
     if (!id) {
-      this.logout();
+      Identity.logout();
       return;
     }
 
@@ -41,7 +46,7 @@ export default class Identity {
       console.log('error parsing identity');
       return;
     }
-    const valid = await Identities.verifyIdentity(identity);
+    const valid = await Identity.verifyIdentity(identity);
     if (valid) {
       return identity;
     }

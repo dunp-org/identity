@@ -7,13 +7,13 @@ import Identity from '..';
 // Web3 Identity
 export default class Web3Identity extends Identity {
   static async login(options = {}) {
-    const wallet = await this.getSigner(options);
+    const wallet = await Web3Identity.getSigner(options);
     const identity = await Identities.createIdentity({
       type: "ethereum",
       wallet,
     });
-    this.saveIdentity(identity);
-    this.saveProvider('web3');
+    Web3Identity.saveIdentity(identity);
+    Web3Identity.saveProvider('web3');
     return identity;
   }
 
